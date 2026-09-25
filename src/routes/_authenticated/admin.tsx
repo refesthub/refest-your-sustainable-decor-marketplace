@@ -35,7 +35,7 @@ function Admin() {
   if (!isAdmin) return <p className="p-10 text-center">Admins only.</p>;
   const setStatus = async (id: string, status: string) => {
     const { error } = await supabase.from("listings").update({ status }).eq("id", id);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     toast.success(`Listing ${status}`);
     qc.invalidateQueries();
   };

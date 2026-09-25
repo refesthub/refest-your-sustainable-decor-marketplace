@@ -33,7 +33,7 @@ function PostPage() {
   const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const f = new FormData(e.currentTarget);
-    if (!f.get("whatsapp") && !f.get("telegram")) return toast.error("Add a WhatsApp number or Telegram username.");
+    if (!f.get("whatsapp") && !f.get("telegram")) { toast.error("Add a WhatsApp number or Telegram username."); return; }
     setBusy(true);
     try {
       const photos: string[] = [];
